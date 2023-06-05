@@ -4,25 +4,27 @@
 while True:
     horas = input('Introduzca cantidad de horas trabajadas: ')
     try:
-        float(horas)
+        horas = float(horas)
         break  # Continuar si se ha ingresado un número válido
-    except:
+    except ValueError:
         print('Error, por favor introduzca un número válido')
 
 while True:
     tarifa = input('Introduzca tarifa por hora: ')
     try:
-        float(tarifa)
+        tarifa = float(tarifa)
         break  # Continuar si se ha ingresado un número válido
-    except:
+    except ValueError:
         print('Error, por favor introduzca un número válido')
 
-if float(horas) > 40.0:
-    x = float(horas) - 40.0
-    he = float(tarifa) * 1.5
-    print('Salario:', ((float(horas) - x) * float(tarifa)) + (x * he))
+if horas > 40.0:
+    horas_extra = horas - 40.0
+    tarifa_horas_extra = tarifa * 1.5
+    salario = ((horas - horas_extra) * tarifa) + (horas_extra * tarifa_horas_extra)
 else:
-    print('Salario:', float(horas) * float(tarifa))
+    salario = horas * tarifa
+
+print('Salario:', salario)
 
 #En este código, se utiliza un bucle while para solicitar el input repetidamente hasta que se introduzca un valor numérico válido.
 #Si se ingresa un valor no numérico, se muestra un mensaje de error y se vuelve a solicitar el input.
